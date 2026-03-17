@@ -67,17 +67,9 @@ X_test_scaled = scaler.transform(X_test)
 model = MLPClassifier(hidden_layer_sizes=(64, 32), max_iter=1000, random_state=42)
 model.fit(X_train_scaled, y_train)
 
-from sklearn.ensemble import RandomForestClassifier
 
-rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
-rf_model.fit(X_train, y_train)
-
-# Ensemble — голосування більшості
 nn_pred = model.predict(X_test_scaled)
-rf_pred = rf_model.predict(X_test)
 
-# Якщо обидві моделі згодні — беремо їх результат
-# Якщо ні — перевага NN (вона краща)
 predictions = nn_pred
 
 # ============================================================
